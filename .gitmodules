@@ -1,0 +1,3 @@
+[submodule "TERRA_User"]
+	path = TERRA_User
+	url = https://github.com/ARQPDataTeam/TERRA_User.git

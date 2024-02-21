@@ -1,5 +1,4 @@
 TERRA (Top-down Emission Rate Retrieval Algorithm)
-Test change to setup README
 
 written by Andrea Darlington, ECCC
 

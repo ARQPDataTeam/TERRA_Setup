@@ -60,10 +60,10 @@ FOR %%d IN (
 			rmdir /s /q TERRA_Setup
 			git clone --recurse-submodules https://github.com/ARQPDataTeam/TERRA_Setup.git
 			
-			REM ## Move FlaggerLoader to correct folder
+			REM ## Move KrigLoader to correct folder
 			cd !IGOR_DIR!\"User Procedures"\TERRA_Setup
-			COPY /y TERRALoader.ipf !IGOR_DIR!\"Igor Procedures"
-			COPY /y TERRA.ihf !IGOR_DIR!\"Igor Help Files"			
+			COPY /y TERRA_User\KrigLoader.ipf !IGOR_DIR!\"Igor Procedures"
+			COPY /y TERRA_User\TERRA.ihf !IGOR_DIR!\"Igor Help Files"			
 
 		) 
 		REM ELSE ( ECHO Igor version %%v not found, skipping )

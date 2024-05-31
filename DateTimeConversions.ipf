@@ -777,6 +777,14 @@ Function ChangeTZGUI ()
 	
 	Variable/G $tzNm = newTZ
 	
+	SVAR xaxis
+	String tzstr
+	GetAxis/Q/W=Flagger#G0 $xaxis
+	if (V_flag == 0)		
+		tzstr = tz2str(newTZ)
+		Label/W=Flagger#G0 bottom "Date/Time (" + tzstr + ")"
+	endif
+	
 End
 
 //Convert between time zone name and numerical value
@@ -864,6 +872,15 @@ Function ChangeTZ (oldTZ, newTZ, timeWv)
 		timeWv[i] = timeWv[i] - oldTZ*60*60					//Convert time to GMT
 		timeWv[i] = timeWv[i] + newTZ*60*60				//Convert time to new time zone
 	endfor
+	
+	SVAR xaxis
+	String tzstr
+	GetAxis/Q/W=Flagger#G0 $xaxis
+	if (V_flag == 0)
+		
+		tzstr = tz2str(newTZ)
+		Label/W=Flagger#G0 bottom "Date/Time (" + tzstr + ")"
+	endif
 
 End
 
@@ -890,6 +907,15 @@ Function batchChangeTZ (newTZ)
 		ChangeTZ (oldTZ, newTZ, timeWv)
 		oldTZ = newTZ
 	endfor
+	
+	SVAR xaxis
+	String tzstr
+	GetAxis/Q/W=Flagger#G0 $xaxis
+	if (V_flag == 0)
+		
+		tzstr = tz2str(newTZ)
+		Label/W=Flagger#G0 bottom "Date/Time (" + tzstr + ")"
+	endif	
 
 End
 
@@ -900,7 +926,7 @@ Function addTZ (site, instrument)
 	String tzNm = site + "__" + instrument + "__TimeZone"
 	String tzStr = "GMT"
 	String tzl = tzList()
-	Prompt tzStr, "What time zone is your data in?", popup, tzl
+	Prompt tzStr, "What time zone is your data in (" + site + "__" + instrument + ")?", popup, tzl
 	DoPrompt "Time Zone", tzStr
 	
 	if (V_flag == 1)
